@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "name": "todo-ssr-client",
+  "description": "A progressively enhanced to-do application client.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Steven Vachon <contact@svachon.com> (https://www.svachon.com/)",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "classnames": "^2.2.5",
+    "formdata-polyfill": "^2.0.3",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-promise-middleware": "^4.3.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-builtin-extend": "^1.1.2",
+    "react-scripts": "1.0.11"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

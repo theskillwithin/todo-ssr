@@ -1,0 +1,49 @@
+{
+  "private": true,
+  "name": "todo-ssr-server",
+  "description": "A progressively enhanced to-do application server.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Steven Vachon <contact@svachon.com> (https://www.svachon.com/)",
+  "main": "src",
+  "dependencies": {
+    "add-ender": "^1.0.0",
+    "body-parser": "^1.17.2",
+    "case-converter": "^1.0.1",
+    "connect-session-knex": "^1.4.0",
+    "cors": "^2.8.4",
+    "debug": "^3.0.0",
+    "express": "^4.15.4",
+    "express-promise-router": "^2.0.0",
+    "express-session": "^1.15.5",
+    "joi": "^10.6.0",
+    "knex": "~0.13.0",
+    "morgan": "^1.8.2",
+    "morgan-debug": "^2.0.0",
+    "pg": "^7.1.2",
+    "scrypt-for-humans": "^2.0.5"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "child-process-promise": "^2.2.1",
+    "cross-env": "^5.0.5",
+    "dotenv": "^4.0.0",
+    "gres": "~0.0.4",
+    "mocha": "^3.5.0",
+    "nock": "^9.0.14",
+    "npm-check-updates": "^2.12.1",
+    "nyc": "^11.1.0"
+  },
+  "engines": {
+    "node": ">= 8"
+  },
+  "scripts": {
+    "check-updates": "ncu",
+    "createdb": "node scripts/createdb",
+    "dropdb": "node scripts/dropdb",
+    "migrate-up": "knex migrate:latest",
+    "start": "cross-env DEBUG=todo node --require dotenv/config src/server",
+    "test": "nyc --reporter=text-summary mocha test/ --check-leaks --bail",
+    "watch": "npm run test --silent -- --watch"
+  }
+}
