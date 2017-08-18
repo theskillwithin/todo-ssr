@@ -2,32 +2,37 @@ import classNames from 'classnames';
 import {connect} from 'react-redux';
 import includesInvalidation from '../util/includesInvalidation';
 import Invalidations from './Invalidations';
+import PropTypes from 'prop-types';
 import React from 'react';
 import {signIn} from '../actions/account';
 //import {signIn} from '../services/account';
 
 class SignIn extends React.Component {
+  static propTypes = {
+    isLoggedIn: PropTypes.bool.isRequired,
+    signIn: PropTypes.func.isRequired
+  };
+
   constructor() {
     super();
 
     this.state = {
       email: '',
       invalidations: [],
-      isLoggedIn: false,
       password: '',
       submitting: false
     };
 
-    this.mounted = false;
+    //this.mounted = false;
   }
 
-  componentWillMount() {
+  /*componentWillMount() {
     this.mounted = true;
   }
 
   componentWillUnmount() {
     this.mounted = false;
-  }
+  }*/
 
   handleInput(event) {
     const name  = event.currentTarget.getAttribute('name');
@@ -46,15 +51,11 @@ class SignIn extends React.Component {
   }
 
   async signIn(...args) {
-    signIn(...args);
-  }
-
-  /*async signIn(...args) {
     if (!this.state.submitting) {
       this.setState({...this.state, submitting: true});
 
       try {
-        await signIn(...args);
+        await this.props.signIn(...args);
 
         this.setState({...this.state, submitting: false});
       } catch(error) {
@@ -70,10 +71,10 @@ class SignIn extends React.Component {
         }
       }
     }
-  }*/
+  }
 
   render() {
-    if (this.state.isLoggedIn) {
+    if (this.props.isLoggedIn) {
       return null;
     } else {
       return (
@@ -117,13 +118,11 @@ class SignIn extends React.Component {
   }
 }
 
-const mapDispatchToProps = {
-  //onTodoClick: toggleTodo
-};
+const mapDispatchToProps = {signIn};
 
 const mapStateToProps = state => {
   return {
-    //todos: getVisibleTodos(state.todos, state.visibilityFilter)
+    isLoggedIn: state.account.isLoggedIn
   };
 };
 

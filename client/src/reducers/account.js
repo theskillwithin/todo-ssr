@@ -1,9 +1,9 @@
 const initialState = {
-  email: null,
-  firstName: null,
-  //id: null,
+  email: '',
+  firstName: '',
+  //id: -1,
   isLoggedIn: false,
-  lastName: null
+  lastName: ''
 };
 
 export default (state=initialState, action) => {
